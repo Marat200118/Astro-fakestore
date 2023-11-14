@@ -1,5 +1,8 @@
 ---
-const { product } = Astro.props;
+const { product, prev, next } = Astro.props;
+import PrevNext from '../components/PrevNext.astro';
+import { Image } from 'astro:assets';
+
 ---
 <style>
   article {
@@ -153,10 +156,13 @@ const { product } = Astro.props;
 
 <div class="wrapper">
   <article class={product.rating.rate > 4.5 ? 'popular' : ''}>
-    <img src={product.image}
+    <Image src={product.image}
       alt={product.image}
-      width="300"
-      height="400"
+      width="1600"
+      height="900"
+      widths={[400, 600, 800]}
+      sizes="(max-width: 800px) 100vw, 800px"
+      loading="lazy"
     />
     <h3>{product.title}</h3>
     <p class="description">
@@ -166,3 +172,4 @@ const { product } = Astro.props;
     <button>Buy now</button>
   </article>
 </div>
+<PrevNext prev={prev} next={next} path="products" />
