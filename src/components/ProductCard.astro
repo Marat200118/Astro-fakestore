@@ -118,6 +118,37 @@ const { product } = Astro.props;
     height: 100%;
     container-type: inline-size;
   }
+
+  @container (min-width: 60em) {
+    .wrapper > article {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2,1fr);
+    }
+    img {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+    }
+    h3 {
+      grid-row: 1;
+      grid-column: 2 / span 3;
+      align-self: center;
+    }
+    .description {
+      grid-row: inherit;
+      grid-column: 2 / span 2;
+    }
+    .price {
+      grid-column: 2;
+    }
+    .price span {
+      font-size: var(--fs-xl);
+    }
+    button {
+      grid-column: 3;
+    }
+  }
+  
 </style>
 
 <div class="wrapper">
