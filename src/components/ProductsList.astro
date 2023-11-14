@@ -1,11 +1,25 @@
 ---
-// Import statement if needed
-
+import ProductCard from "../components/ProductCard.astro";
 const { title } = Astro.props;
 
-// Fetch product data from the API
 const products = await fetch('https://fakestoreapi.com/products').then(r => r.json());
 ---
+
+<style>
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-gap: var(--s4);
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  li {
+    list-style: none;
+  }
+</style>
 
 <html>
 <head>
@@ -14,11 +28,15 @@ const products = await fetch('https://fakestoreapi.com/products').then(r => r.js
 <body>
   <h1>Products List</h1>
   <ul>
-    {products.map(product => (
+  {
+    products.map((product) => (
       <li>
-        <h2>{product.title}</h2>
+        <a href={`/products/${product.id}`}>
+          <ProductCard product={product} />
+        </a>  
       </li>
-    ))}
+    ))
+  }
   </ul>
 </body>
 </html>
