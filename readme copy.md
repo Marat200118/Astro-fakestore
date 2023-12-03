@@ -435,7 +435,7 @@ There is an issue though. Sizes are based on vieuwport widths, but we are using 
 You might have picked it up somewhere already, [view transitions](https://developer.chrome.com/docs/web-platform/view-transitions/) (aka: page transitions) are a thing now on the web. Astro jumped on the wagon and made [implementing them](https://docs.astro.build/en/guides/view-transitions/) a breeze.
 
 - Add the `<ViewTransitions />` component to the head of our BaseLayout.
-- To let the browser know wich element corresponds with another element on another page, we can give them names. In our case, we would like to do this with our product cards. To distinguish them, we will use the product ID. We end up with something like this, add it to the product card wrapper div
+- To lnames. In our caseet the browser know wich element corresponds with another element on another page, we can give them , we would like to do this with our product cards. To distinguish them, we will use the product ID. We end up with something like this, add it to the product card wrapper div
 
   ```jsx
   transition:name={`product-${product.id}`}
